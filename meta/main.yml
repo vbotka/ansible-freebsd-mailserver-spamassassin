@@ -1,0 +1,20 @@
+galaxy_info:
+  author: Vladimir Botka
+  description: Install and configure spamassassin
+  company: https://botka.link
+  license: BSD
+  min_ansible_version: 1.2
+  platforms:
+    - name: FreeBSD
+  versions:
+    - 10.3
+  categories:
+  - system
+  galaxy_tags:
+    - installer
+    - mail
+    - mailserver
+    - freebsd
+    - spamassassin
+dependencies:
+  - vbotka.ansible-freebsd-mailserver

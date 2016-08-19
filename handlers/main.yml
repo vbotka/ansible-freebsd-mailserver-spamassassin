@@ -1,0 +1,22 @@
+---
+# handlers for freebsd-mailserver-spamassassin
+
+# sa-spamd
+- name: enable and start spamd
+  service: name="sa-spamd" state="started" enabled="yes"
+
+- name: disable and stop spamd
+  service: name="sa-spamd" state="stopped" enabled="no"
+
+- name: restart spamd
+  service: name="sa-spamd" state="restarted"
+
+- name: reload spamd
+  service: name="sa-spamd" state="reloaded"
+
+# postfix
+- name: reload postfix
+  service: name="postfix" state="reloaded"
+
+- name: restart postfix
+  service: name="postfix" state="restarted"

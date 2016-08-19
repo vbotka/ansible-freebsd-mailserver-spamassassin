@@ -1,0 +1,6 @@
+
+- name: Install packages
+  pkgng: name={{item}} state="present"
+  with_items:
+    - spamassassin
+    - sa-utils

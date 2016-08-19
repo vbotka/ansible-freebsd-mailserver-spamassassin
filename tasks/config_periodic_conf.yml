@@ -1,0 +1,10 @@
+---
+
+- name: Configure /etc/periodic.conf.local
+  lineinfile: dest="/etc/periodic.conf.local" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes" create="yes"
+  with_items:
+    - { regexp: "^daily_sa_enable=",  line: "daily_sa_enable=\"YES\""}
+    - { regexp: "^daily_sa_compile=",  line: "daily_sa_compile=\"YES\""}
+    - { regexp: "^daily_sa_compile_nice=",  line: "daily_sa_compile_nice=\"YES\""}
+    - { regexp: "^daily_sa_restart_spamd=",  line: "daily_sa_restart_spamd=\"YES\""}
+  tags: config_periodic_conf_local

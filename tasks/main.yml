@@ -1,0 +1,14 @@
+---
+# tasks file for freebsd-mailserver-spamassassin
+
+- include: packages.yml
+  tags: packages, freebsd-mailserver-spamassassin
+
+- include: config_rc_conf.yml
+  tags: config_rc_conf, freebsd-mailserver-spamassassin
+
+- include: config_postfix_master.yml
+  tags: config_postfix_master, freebsd-mailserver-spamassassin
+
+- include: config_periodic_conf.yml
+  tags: config_periodic_conf, freebsd-mailserver-spamassassin
