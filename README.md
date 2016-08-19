@@ -46,7 +46,8 @@ ansible-galaxy install vbotka.ansible-freebsd-mailserver-spamassassin
   become: yes
   become_method: sudo
   roles:
-    - role: vbotka.ansible-freebsd-mailserver
+# mailserver-spamassassin run mailserver role as a dependency
+#   - role: vbotka.ansible-freebsd-mailserver
     - role: vbotka.ansible-freebsd-mailserver-spamassassin
 ```
 
