@@ -10,5 +10,8 @@
 - include: config_postfix_master.yml
   tags: config_postfix_master, freebsd-mailserver-spamassassin
 
+- include: copy_spamfilter.yml
+  tags: copy_spamfilter, freebsd-mailserver-spamassassin
+
 - include: config_periodic_conf.yml
   tags: config_periodic_conf, freebsd-mailserver-spamassassin

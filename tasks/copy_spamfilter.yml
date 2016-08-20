@@ -1,0 +1,4 @@
+---
+
+- name: Copy spamfilter.sh to /usr/bin
+  copy: src="{{ role_path }}/files/spamfilter.sh" dest="/usr/bin/spamfilter.sh" owner=root group=wheel mode=755
