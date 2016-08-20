@@ -70,3 +70,10 @@ Author Information
 ------------------
 
 [Vladimir Botka](https://botka.link)
+
+
+References
+----------
+
+[Integrating SpamAssassin into Postfix using spamd](https://wiki.apache.org/spamassassin/IntegratedSpamdInPostfix)
+
