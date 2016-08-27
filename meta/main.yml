@@ -3,6 +3,7 @@ galaxy_info:
   description: Install and configure spamassassin
   company: https://botka.link
   license: BSD
+  github_branch: release
   min_ansible_version: 1.2
   platforms:
     - name: FreeBSD
