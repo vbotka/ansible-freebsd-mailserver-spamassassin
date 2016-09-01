@@ -16,5 +16,5 @@
   lineinfile: dest="/etc/rc.conf" regexp="{{ item.regexp }}" line="{{ item.line }}" backup="yes"
   with_items:
     - { regexp: "^spamd_flags", line: "spamd_flags=\"{{ spamd_flags }}\""}
-  notify: restart splamd
+  notify: restart spamd
   tags: config_rc_conf_spamd
