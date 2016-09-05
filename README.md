@@ -3,8 +3,9 @@ freebsd-mailserver-spamassassin
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
 
-This role installs and configures spamassassin on FreeBSD.
+Ansible role. Install and configure spamassassin on FreeBSD.
 
+https://galaxy.ansible.com/vbotka/ansible-freebsd-mailserver-spamassassin/
 
 Requirements
 ------------
