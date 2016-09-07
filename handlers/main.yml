@@ -2,6 +2,9 @@
 # handlers for freebsd-mailserver-spamassassin
 
 # sa-spamd
+- name: update spamd rules
+  command: "/usr/local/bin/sa-update"
+
 - name: enable and start spamd
   service: name="sa-spamd" state="started" enabled="yes"
 

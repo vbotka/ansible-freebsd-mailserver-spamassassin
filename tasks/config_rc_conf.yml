@@ -2,7 +2,9 @@
 
 - name: Enable and start spamd
   lineinfile: dest="/etc/rc.conf" regexp="^spamd_enable" line="spamd_enable=\"{{ spamd_enable }}\"" backup="yes"
-  notify: enable and start spamd
+  notify:
+    - update spamd rules
+    - enable and start spamd
   when: spamd_enable == "YES"
   tags: config_rc_conf_spamd
 
