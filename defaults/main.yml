@@ -4,5 +4,13 @@
 spamd_enable: "YES"
 spamd_flags: "-u spamd -H /var/spool/spamd"
 
+freebsd_install_method: "packages"
+#freebsd_install_method: "ports"
+#freebsd_use_packages: "yes"
+
+freebsd_mailserver_spamassasin_packages:
+  - spamassassin
+  - sa-utils
+
 postfix_master_cf: "/usr/local/etc/postfix/master.cf"
 postfix_master_cf_service_def: "inet  n       -       -       -       -       smtpd -o content_filter=spamfilter"
