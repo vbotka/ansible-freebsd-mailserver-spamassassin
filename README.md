@@ -2,16 +2,14 @@ freebsd-mailserver-spamassassin
 ===============================
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
-[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
-Ansible role. Install and configure spamassassin on FreeBSD.
+[Ansible role](https://galaxy.ansible.com/vbotka/ansible-freebsd-mailserver-spamassassin/). Install and configure spamassassin on FreeBSD.
 
-https://galaxy.ansible.com/vbotka/ansible-freebsd-mailserver-spamassassin/
 
 Requirements
 ------------
 
-vbotka.ansible-freebsd-mailserver
+- [vbotka.ansible-freebsd-mailserver](https://galaxy.ansible.com/vbotka/ansible-freebsd-mailserver/)
 
 
 Variables
@@ -67,7 +65,7 @@ ansible-playbook ~/.ansible/playbooks/freebsd-mailserver.yml
 License
 -------
 
-BSD
+[![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
 Author Information
@@ -79,5 +77,4 @@ Author Information
 References
 ----------
 
-[Integrating SpamAssassin into Postfix using spamd](https://wiki.apache.org/spamassassin/IntegratedSpamdInPostfix)
-
+- [Integrating SpamAssassin into Postfix using spamd](https://wiki.apache.org/spamassassin/IntegratedSpamdInPostfix)
