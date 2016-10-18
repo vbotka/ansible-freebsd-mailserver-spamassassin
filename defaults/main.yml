@@ -12,5 +12,4 @@ freebsd_mailserver_spamassasin_packages:
   - spamassassin
   - sa-utils
 
-postfix_master_cf: "/usr/local/etc/postfix/master.cf"
 postfix_master_cf_service_def: "inet  n       -       -       -       -       smtpd -o content_filter=spamfilter"
