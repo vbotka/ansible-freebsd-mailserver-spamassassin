@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - freebsd-mailserver-spamassassin
+    - ansible-freebsd-mailserver-spamassassin
