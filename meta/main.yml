@@ -16,4 +16,4 @@ galaxy_info:
     - freebsd
     - spamassassin
 dependencies:
-  - vbotka.freebsd-mailserver
+  - vbotka.ansible-freebsd-mailserver
