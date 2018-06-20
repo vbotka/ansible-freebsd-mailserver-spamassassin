@@ -1,23 +1,24 @@
 ---
-# tasks file for freebsd-mailserver-spamassassin
+# tasks for freebsd-mailserver-spamassassin
 
-- include: packages.yml
-  tags:
-    - bsd_packages
-    - bsd_ports
-    - freebsd-mailserver-spamassassin
+- import_tasks: debug.yml
+  when: fm_sa_debug
+  tags: fm-sa-debug
 
-- include: config_rc_conf.yml
-  tags: config_rc_conf, freebsd-mailserver-spamassassin
+- import_tasks: packages.yml
+  tags: fm-sa-packages
 
-- include: config_postfix_master.yml
-  tags: config_postfix_master, freebsd-mailserver-spamassassin
+- import_tasks: rcconf.yml
+  tags: fm-sa-rcconf
 
-- include: copy_spamfilter.yml
-  tags: copy_spamfilter, freebsd-mailserver-spamassassin
+- import_tasks: postfix_master.yml
+  tags: fm-sa-postfix_master
 
-- include: config_periodic_conf.yml
-  tags: config_periodic_conf, freebsd-mailserver-spamassassin
+- import_tasks: copy_spamfilter.yml
+  tags: fm-sa-copy_spamfilter
+
+- import_tasks: periodic_conf.yml
+  tags: fm-sa-periodic_conf
 
 # EOF
 ...

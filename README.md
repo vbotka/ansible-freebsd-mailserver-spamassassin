@@ -3,19 +3,19 @@ freebsd-mailserver-spamassassin
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-mailserver-spamassassin/). Install and configure spamassassin on FreeBSD.
+[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-mailserver-spamassassin/). Install and configure Apache SpamAssassin with Postfix and FreeBSD.
 
 
 Requirements
 ------------
 
-- [vbotka.ansible-freebsd-mailserver](https://galaxy.ansible.com/vbotka/ansible-freebsd-mailserver/)
+- [vbotka.freebsd-mailserver](https://galaxy.ansible.com/vbotka/freebsd-mailserver/)
 
 
 Variables
 ---------
 
-TBD (Check the defaults).
+TBD. Check the defaults.
 
 
 Workflow
@@ -24,39 +24,39 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
+# ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
 2) Install role.
 
 ```
-ansible-galaxy install vbotka.ansible-freebsd-mailserver-spamassassin
+# ansible-galaxy install vbotka.freebsd-mailserver-spamassassin
 ```
 
 3) Fit variables.
 
 ```
-~/.ansible/roles/ansible-freebsd-mailserver-spamassassin/vars/main.yml
+# editor vbotka.freebsd-mailserver-spamassassin/vars/main.yml
 ```
+
+By default the daemon *sa-spamd* is disabled *fm_sa_spamd_enable: False*.
 
 4) Create playbook.
 
 ```
-> cat ~/.ansible/playbooks/freebsd-mailserver.yml
----
+# cat freebsd-mailserver.yml
+
 - hosts: mailserver
-  become: yes
-  become_method: sudo
   roles:
-# mailserver-spamassassin run mailserver role as a dependency
-#   - role: vbotka.ansible-freebsd-mailserver
-    - role: vbotka.ansible-freebsd-mailserver-spamassassin
+# freebsd-mailserver-spamassassin runs freebsd-mailserver role as a dependency
+#   - role: vbotka.freebsd-mailserver
+    - role: vbotka.freebsd-mailserver-spamassassin
 ```
 
-5) Install and configure the mailserver with spamassassin.
+5) Install and configure Postfix with SpamAssassin.
 
 ```
-ansible-playbook ~/.ansible/playbooks/freebsd-mailserver.yml
+# ansible-playbook freebsd-mailserver.yml
 ```
 
 6) Consider to test the mailserver with http://mxtoolbox.com/

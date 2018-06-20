@@ -6,20 +6,40 @@
   command: "/usr/local/bin/sa-update"
 
 - name: enable and start spamd
-  service: name="sa-spamd" state="started" enabled="yes"
+  service:
+    name: "sa-spamd"
+    state: "started"
+    enabled: yes
 
 - name: disable and stop spamd
-  service: name="sa-spamd" state="stopped" enabled="no"
+  service:
+    name: "sa-spamd"
+    state: "stopped"
+    enabled: no
 
 - name: restart spamd
-  service: name="sa-spamd" state="restarted"
+  service:
+    name: "sa-spamd"
+    state: "restarted"
 
 - name: reload spamd
-  service: name="sa-spamd" state="reloaded"
+  service:
+    name: "sa-spamd"
+    state: "reloaded"
 
 # postfix
+- name: postfix check
+  command: "/usr/local/sbin/postfix check"
+
 - name: reload postfix
-  service: name="postfix" state="reloaded"
+  service:
+    name: "postfix"
+    state: "reloaded"
 
 - name: restart postfix
-  service: name="postfix" state="restarted"
+  service:
+    name: "postfix"
+    state: "restarted"
+
+# EOF
+...

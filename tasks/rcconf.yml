@@ -1,0 +1,37 @@
+---
+
+- name: "rcconf: Enable and start spamd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^spamd_enable"
+    line: "spamd_enable=\"YES\""
+    backup: yes
+  notify:
+    - update spamd rules
+    - enable and start spamd
+  when: fm_sa_spamd_enable
+  tags: spamd_rcconf
+
+- name: "rcconf: Disable and stop spamd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^spamd_enable"
+    line: "spamd_enable=\"NO\""
+    backup: yes
+  notify: disable and stop spamd
+  when: not fm_sa_spamd_enable
+  tags: spamd_rcconf
+
+- name: "rcconf: Configure spamd"
+  lineinfile:
+    dest: "/etc/rc.conf"
+    regexp: "^{{ item.regexp }}"
+    line: "{{ item.regexp }}={{ item.line }}"
+    backup: yes
+  with_items:
+    - { regexp: "spamd_flags", line: "\"{{ fm_sa_spamd_flags }}\""}
+  notify: restart spamd
+  tags: spamd_rcconf
+
+# EOF
+...

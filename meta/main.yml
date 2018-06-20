@@ -1,20 +1,18 @@
 galaxy_info:
   author: Vladimir Botka
-  description: Install and configure spamassassin
+  description: Install and configure Apache SpamAssassin with Postfix and FreeBSD.
   company: https://botka.link
   license: BSD
   github_branch: master
-  min_ansible_version: 2.3
+  min_ansible_version: 2.5
   platforms:
     - name: FreeBSD
       versions:
-        - 10.3
-        - 11.0
+        - 10.4
+        - 11.1
   galaxy_tags:
-    - installer
-    - mail
-    - mailserver
-    - freebsd
-    - spamassassin
+    - FreeBSD
+    - Postfix
+    - SpamAssassin
 dependencies:
   - vbotka.freebsd-mailserver

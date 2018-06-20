@@ -1,0 +1,14 @@
+---
+
+- name: "periodic_conf: Configure /etc/periodic.conf.local"
+  lineinfile:
+    dest: "/etc/periodic.conf.local"
+    regexp: "^{{ item.regexp }}"
+    line: "{{ item.regexp }}{{ item.value }}"
+    backup: yes
+    create: yes
+  with_items: "{{ fm_sa_periodic_conf }}"
+  tags: periodic_conf_local
+
+# EOF
+...
