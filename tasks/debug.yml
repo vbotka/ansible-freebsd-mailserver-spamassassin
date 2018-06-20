@@ -29,7 +29,7 @@
          virtual_aliases
          {{ virtual_aliases | to_yaml }}
          
-         fm_sa_spamd_enable [ {{ fm_spamd_enable }} ]
+         fm_sa_spamd_enable [ {{ fm_sa_spamd_enable }} ]
          fm_sa_spamd_flags [ {{ fm_sa_spamd_flags }} ]
          fm_sa_packages
          {{ fm_sa_packages | to_nice_yaml }}
