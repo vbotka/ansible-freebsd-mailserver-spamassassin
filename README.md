@@ -3,7 +3,7 @@ freebsd-mailserver-spamassassin
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-mailserver-spamassassin/). Install and configure Apache SpamAssassin with Postfix and FreeBSD.
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-mailserver-spamassassin/) FreeBSD. Install and configure Apache SpamAssassin with Postfix.
 
 
 Requirements
