@@ -17,7 +17,7 @@ install:
 
   # Fetch dependencies
   #- git clone https://github.com/vbotka/ansible-freebsd-mailserver.git tests/roles/vbotka.freebsd_mailserver
-  - ansible_galaxy install -p tests/roles/ vbotka.freebsd_mailserver
+  - ansible-galaxy install -p tests/roles/ vbotka.freebsd_mailserver
 
   # Check ansible version
   - ansible --version
