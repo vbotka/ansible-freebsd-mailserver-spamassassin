@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: freebsd_mailserver_spamassassin
   author: Vladimir Botka
   description: FreeBSD. Install and configure Apache SpamAssassin with Postfix.
   company: https://botka.link
@@ -15,4 +16,4 @@ galaxy_info:
     - postfix
     - spamassassin
 dependencies:
-  - vbotka.freebsd-mailserver
+  - vbotka.freebsd_mailserver

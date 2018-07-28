@@ -1,21 +1,21 @@
-freebsd-mailserver-spamassassin
+freebsd_mailserver_spamassassin
 ===============================
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-mailserver-spamassassin/) FreeBSD. Install and configure Apache SpamAssassin with Postfix.
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_mailserver_spamassassin/) FreeBSD. Install and configure Apache SpamAssassin with Postfix.
 
 
 Requirements
 ------------
 
-- [vbotka.freebsd-mailserver](https://galaxy.ansible.com/vbotka/freebsd-mailserver/)
+- [vbotka.freebsd_mailserver](https://galaxy.ansible.com/vbotka/freebsd_mailserver/)
 
 
 Variables
 ---------
 
-TBD. Check the defaults.
+TBD. Review the defaults and examples in vars.
 
 
 Workflow
@@ -30,13 +30,13 @@ Workflow
 2) Install role.
 
 ```
-# ansible-galaxy install vbotka.freebsd-mailserver-spamassassin
+# ansible-galaxy install vbotka.freebsd_mailserver_spamassassin
 ```
 
 3) Fit variables.
 
 ```
-# editor vbotka.freebsd-mailserver-spamassassin/vars/main.yml
+# editor vbotka.freebsd_mailserver_spamassassin/vars/main.yml
 ```
 
 By default the daemon *sa-spamd* is disabled *fm_sa_spamd_enable: False*.
@@ -48,9 +48,9 @@ By default the daemon *sa-spamd* is disabled *fm_sa_spamd_enable: False*.
 
 - hosts: mailserver
   roles:
-# freebsd-mailserver-spamassassin runs freebsd-mailserver role as a dependency
-#   - role: vbotka.freebsd-mailserver
-    - role: vbotka.freebsd-mailserver-spamassassin
+# freebsd_mailserver_spamassassin runs freebsd_mailserver role as a dependency
+#   - vbotka.freebsd_mailserver
+    - vbotka.freebsd_mailserver_spamassassin
 ```
 
 5) Install and configure Postfix with SpamAssassin.
