@@ -5,10 +5,9 @@
     dest: "/etc/periodic.conf.local"
     regexp: "^{{ item.regexp }}"
     line: "{{ item.regexp }}{{ item.value }}"
-    backup: yes
+    backup: "{{ fm_sa_backup_conf }}"
     create: yes
-  with_items: "{{ fm_sa_periodic_conf }}"
-  tags: periodic_conf_local
+  loop: "{{ fm_sa_periodic_conf }}"
 
 # EOF
 ...

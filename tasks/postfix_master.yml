@@ -5,59 +5,38 @@
     dest: "{{ postfix_master_cf }}"
     regexp: "^spamfilter\\s*unix "
     line: "spamfilter unix  -       n       n       -       -       pipe"
-    backup: yes
+    backup: "{{ fm_sa_backup_conf }}"
   notify:
     - postfix check
     - reload postfix
-  tags: postfix_master_cf_spamfilter
 
-- name: "postfix_master: Configure spamfilter options {{postfix_master_cf}}"
+- name: "postfix_master: Configure spamfilter options {{ postfix_master_cf }}"
   lineinfile:
     dest: "{{ postfix_master_cf }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     insertafter: "^spamfilter unix "
-    backup: yes
-  with_items:
+    backup: "{{ fm_sa_backup_conf }}"
+  loop:
     - { regexp: "\\s*flags=Rq user=spamd argv=/usr/bin/spamfilter.sh",
-        line: "   flags=Rq user=spamd argv=/usr/bin/spamfilter.sh -oi -f ${sender} ${recipient}"}
+        line: "   flags=Rq user=spamd argv=/usr/bin/spamfilter.sh -oi -f ${sender} ${recipient}" }
   notify:
     - postfix check
     - reload postfix
-  tags: postfix_master_cf_spamfilter
 
-- name: "postfix_master: Configure smtps {{ postfix_master_cf }}"
+- name: "postfix_master: Configure {{ postfix_master_cf }}"
   lineinfile:
     dest: "{{ postfix_master_cf }}"
-    regexp: "^smtps\\s*inet "
-    line: "smtps  {{ postfix_master_cf_service_def }}"
-    backup: yes
+    regexp: "^{{ item.regexp }}"
+    line: "{{ item.line }}"
+    backup: "{{ fm_sa_backup_conf }}"
+  loop:
+    - { regexp: "smtps\\s*inet ", line: "smtps  {{ postfix_master_cf_service_def }}" }
+    - { regexp: "submission\\s*inet ", line: "submission  {{ postfix_master_cf_service_def }}" }
+    - { regexp: "smtp\\s*inet ", line: "smtp  {{ postfix_master_cf_service_def }}" }
   notify:
     - postfix check
     - reload postfix
-  tags: postfix_master_cf_smtps
-
-- name: "postfix_master: Configure submission {{ postfix_master_cf }}"
-  lineinfile:
-    dest: "{{postfix_master_cf}}"
-    regexp: "^submission\\s*inet "
-    line: "submission  {{postfix_master_cf_service_def}}"
-    backup: yes
-  notify:
-    - postfix check
-    - reload postfix
-  tags: postfix_master_cf_submission
-
-- name: "postfix_master: Configure smtp {{ postfix_master_cf }}"
-  lineinfile:
-    dest: "{{ postfix_master_cf }}"
-    regexp: "^smtp\\s*inet "
-    line: "smtp {{ postfix_master_cf_service_def }}"
-    backup: yes
-  notify:
-    - postfix check
-    - reload postfix
-  tags: postfix_master_cf_smtp
 
 # EOF
 ...

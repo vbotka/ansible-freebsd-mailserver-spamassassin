@@ -12,29 +12,15 @@
 
          freebsd_install_method [ {{ freebsd_install_method }} ]
          freebsd_use_packages [ {{ freebsd_use_packages }} ]
-
-         fm_postfix_enable [ {{ fm_postfix_enable }} ]
-         fm_dovecot_enable [ {{ fm_dovecot_enable }} ]
-         digitalocean  [ {{ digitalocean }} ]
-         freebsd_mailserver_packages
-         {{ freebsd_mailserver_packages | to_nice_yaml }}
-         rc_conf_hostname [ {{ rc_conf_hostname }} ]
-         postmaster_address [ {{ postmaster_address }} ]
-         postfix_main_cf_myhostname [ {{ postfix_main_cf_myhostname }} ]
-         postfix_main_cf_mydomain [ {{ postfix_main_cf_mydomain }} ]
-         postfix_main_cf_message_size_limit [ {{ postfix_main_cf_message_size_limit }} ]
-         postfix_main_cf_virtual_alias_domains [ {{ postfix_main_cf_virtual_alias_domains }} ]
-         aliases
-         {{ aliases | to_yaml }}
-         virtual_aliases
-         {{ virtual_aliases | to_yaml }}
-         
-         fm_sa_spamd_enable [ {{ fm_sa_spamd_enable }} ]
-         fm_sa_spamd_flags [ {{ fm_sa_spamd_flags }} ]
          fm_sa_packages
          {{ fm_sa_packages | to_nice_yaml }}
+         fm_sa_spamd_enable [ {{ fm_sa_spamd_enable }} ]
+         fm_sa_spamd_flags [ {{ fm_sa_spamd_flags }} ]
          fm_sa_periodic_conf
          {{ fm_sa_periodic_conf | to_yaml }}
+         postfix_master_cf [ {{ postfix_master_cf }} ]
+         postfix_master_cf_service_def [ {{ postfix_master_cf_service_def }} ]
+
   debug:
     msg: "{{ msg.split('\n') }}"
 
