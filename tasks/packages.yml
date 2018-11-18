@@ -5,7 +5,7 @@
     name: "{{ item }}"
   loop: "{{ fm_sa_packages }}"
   when: freebsd_install_method == "packages"
-  
+
 - name: "packages: Install ports"
   portinstall:
     name: "{{ item }}"
