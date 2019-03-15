@@ -8,24 +8,24 @@
 - name: enable and start spamd
   service:
     name: "sa-spamd"
-    state: "started"
+    state: started
     enabled: yes
 
 - name: disable and stop spamd
   service:
     name: "sa-spamd"
-    state: "stopped"
+    state: stopped
     enabled: no
 
 - name: restart spamd
   service:
     name: "sa-spamd"
-    state: "restarted"
+    state: restarted
 
 - name: reload spamd
   service:
     name: "sa-spamd"
-    state: "reloaded"
+    state: reloaded
 
 # postfix
 - name: postfix check
@@ -34,12 +34,12 @@
 - name: reload postfix
   service:
     name: "postfix"
-    state: "reloaded"
+    state: reloaded
 
 - name: restart postfix
   service:
     name: "postfix"
-    state: "restarted"
+    state: restarted
 
 # EOF
 ...

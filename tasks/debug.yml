@@ -18,6 +18,7 @@
          fm_sa_spamd_flags [ {{ fm_sa_spamd_flags }} ]
          fm_sa_periodic_conf
          {{ fm_sa_periodic_conf | to_yaml }}
+         fm_sa_spamfilter_path [ {{ fm_sa_spamfilter_path }} ]
          postfix_master_cf [ {{ postfix_master_cf }} ]
          postfix_master_cf_service_def [ {{ postfix_master_cf_service_def }} ]
 

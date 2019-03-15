@@ -3,8 +3,8 @@
 - name: "periodic_conf: Configure /etc/periodic.conf.local"
   lineinfile:
     dest: "/etc/periodic.conf.local"
-    regexp: "^{{ item.regexp }}"
-    line: "{{ item.regexp }}{{ item.value }}"
+    regexp: "^\\s*{{ item.regexp }}\\s*="
+    line: "{{ item.regexp }}=\"{{ item.value }}\""
     backup: "{{ fm_sa_backup_conf }}"
     create: yes
   loop: "{{ fm_sa_periodic_conf }}"
