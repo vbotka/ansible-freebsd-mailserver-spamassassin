@@ -6,7 +6,7 @@
     regexp: "^\\s*{{ item.regexp }}\\s*="
     line: "{{ item.regexp }}=\"{{ item.value }}\""
     backup: "{{ fm_sa_backup_conf }}"
-    create: yes
+    create: true
   loop: "{{ fm_sa_periodic_conf }}"
 
 # EOF

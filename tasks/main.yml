@@ -1,5 +1,5 @@
 ---
-# tasks for freebsd-mailserver-spamassassin
+# tasks for freebsd_mailserver_spamassassin
 
 - import_tasks: debug.yml
   when: fm_sa_debug

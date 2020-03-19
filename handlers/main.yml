@@ -1,44 +1,44 @@
 ---
-# handlers for freebsd-mailserver-spamassassin
+# handlers for freebsd_mailserver_spamassassin
 
 # sa-spamd
 - name: update spamd rules
-  command: "/usr/local/bin/sa-update"
+  command: /usr/local/bin/sa-update
 
 - name: enable and start spamd
   service:
-    name: "sa-spamd"
+    name: sa-spamd
     state: started
-    enabled: yes
+    enabled: true
 
 - name: disable and stop spamd
   service:
-    name: "sa-spamd"
+    name: sa-spamd
     state: stopped
-    enabled: no
+    enabled: false
 
 - name: restart spamd
   service:
-    name: "sa-spamd"
+    name: sa-spamd
     state: restarted
 
 - name: reload spamd
   service:
-    name: "sa-spamd"
+    name: sa-spamd
     state: reloaded
 
 # postfix
 - name: postfix check
-  command: "/usr/local/sbin/postfix check"
+  command: /usr/local/sbin/postfix check
 
 - name: reload postfix
   service:
-    name: "postfix"
+    name: postfix
     state: reloaded
 
 - name: restart postfix
   service:
-    name: "postfix"
+    name: postfix
     state: restarted
 
 # EOF
