@@ -2,11 +2,15 @@
 # tasks for freebsd_mailserver_spamassassin
 
 - import_tasks: debug.yml
-  when: fm_sa_debug
+  when: fm_sa_debug|bool
   tags: [fm-sa-debug, always]
 
 - import_tasks: packages.yml
   tags: fm-sa-packages
+
+- import_tasks: sanity.yml
+  when: fm_sa_sanity|bool
+  tags: fm-sa-sanity
 
 - import_tasks: rcconf.yml
   tags: fm-sa-rcconf

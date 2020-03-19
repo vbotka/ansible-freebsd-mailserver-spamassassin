@@ -10,6 +10,7 @@
     name: sa-spamd
     state: started
     enabled: true
+  when: fm_sa_spamd_enable|bool
 
 - name: disable and stop spamd
   service:
@@ -21,11 +22,13 @@
   service:
     name: sa-spamd
     state: restarted
+  when: fm_sa_spamd_enable|bool
 
 - name: reload spamd
   service:
     name: sa-spamd
     state: reloaded
+  when: fm_sa_spamd_enable|bool
 
 # postfix
 - name: postfix check
