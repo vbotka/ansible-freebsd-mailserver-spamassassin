@@ -4,6 +4,7 @@
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_mailserver_spamassassin/) FreeBSD. Install and configure Apache SpamAssassin with Postfix.
 
+Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-sieve/issues).
 
 ## Dependencies
 
