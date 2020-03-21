@@ -1,22 +1,22 @@
-## freebsd_mailserver_spamassassin
+# freebsd_mailserver_spamassassin
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_mailserver_spamassassin/) FreeBSD. Install and configure Apache SpamAssassin with Postfix.
 
 
-# Dependencies
+## Dependencies
 
 - [vbotka.freebsd_mailserver](https://galaxy.ansible.com/vbotka/freebsd_mailserver/) Install and configure Postfix and Dovecot.
 - [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) Library of Ansible tasks.
 
 
-# Variables
+## Variables
 
 Review the defaults and examples in vars.
 
 
-# Workflow
+## Workflow
 
 1) Change shell to /bin/sh
 
@@ -58,16 +58,16 @@ shell> ansible-playbook freebsd-mailserver.yml
 6) Consider to test the mailserver with http://mxtoolbox.com/
 
 
-# References
+## References
 
 - [Integrating SpamAssassin into Postfix using spamd](https://wiki.apache.org/spamassassin/IntegratedSpamdInPostfix)
 
 
-# License
+## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
-# Author Information
+## Author Information
 
 [Vladimir Botka](https://botka.link)
