@@ -47,5 +47,8 @@ fm_sa_spamfilter_path: "/usr/bin"
 postfix_master_cf: /usr/local/etc/postfix/master.cf
 postfix_master_cf_service_def: "inet  n       -       -       -       -       smtpd -o content_filter=spamfilter"
 
+# sanity: override supported versions
+al_supported_versions_override: ['11.3', '11.4', '12.0', '12.1', '12.2']
+
 # EOF
 ...
