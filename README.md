@@ -9,12 +9,18 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 [Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
-## Dependencies
+## Requirements and dependencies
+
+### Roles
+
+The dependencies are not listed in the meta file. Install them manually.
 
 - [vbotka.freebsd_mailserver](https://galaxy.ansible.com/vbotka/freebsd_mailserver/) Install and configure Postfix and Dovecot.
 - [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib) Library of Ansible tasks.
 
-The dependencies are not listed in the meta file. Install the roles manually.
+### Collections
+
+- community.general
 
 
 ## Variables
@@ -33,10 +39,10 @@ shell> ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/b
 2) Install role
 
 ```
-shell> ansible-galaxy install vbotka.freebsd_mailserver_spamassassin
+shell> ansible-galaxy role install vbotka.freebsd_mailserver_spamassassin
 ```
 
-3) Fit variables
+3) Fit variables, e.g. in vars/main.yml
 
 ```
 shell> editor vbotka.freebsd_mailserver_spamassassin/vars/main.yml

@@ -1,7 +1,7 @@
 ---
 
 - name: "postfix_master: Configure spamfilter {{ postfix_master_cf }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
     regexp: "^spamfilter\\s*unix "
     line: "spamfilter unix  -       n       n       -       -       pipe"
@@ -11,21 +11,21 @@
     - reload postfix
 
 - name: "postfix_master: Configure spamfilter options {{ postfix_master_cf }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     insertafter: "^spamfilter unix "
     backup: "{{ fm_sa_backup_conf }}"
   loop:
-    - {regexp: "\\s*flags=Rq user=spamd argv={{ fm_sa_spamfilter_path }}/spamfilter.sh",
-       line: "   flags=Rq user=spamd argv={{ fm_sa_spamfilter_path }}/spamfilter.sh -oi -f ${sender} ${recipient}"}
+    - regexp: "\\s*flags=Rq user=spamd argv={{ fm_sa_spamfilter_path }}/spamfilter.sh"
+      line: "   flags=Rq user=spamd argv={{ fm_sa_spamfilter_path }}/spamfilter.sh -oi -f ${sender} ${recipient}"
   notify:
     - postfix check
     - reload postfix
 
 - name: "postfix_master: Configure {{ postfix_master_cf }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
     regexp: "^{{ item.regexp }}"
     line: "{{ item.line }}"
