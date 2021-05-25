@@ -6,6 +6,7 @@
   tags: [fm-sa-debug, always]
 
 - import_tasks: packages.yml
+  when: fm_sa_install|bool
   tags: fm-sa-packages
 
 - import_tasks: sanity.yml

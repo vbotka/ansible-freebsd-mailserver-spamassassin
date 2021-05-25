@@ -3,44 +3,46 @@
 
 # sa-spamd
 - name: update spamd rules
-  command: /usr/local/bin/sa-update
+  command:
+    cmd: /usr/local/bin/sa-update
 
 - name: enable and start spamd
-  service:
+  ansible.builtin.service:
     name: sa-spamd
     state: started
     enabled: true
   when: fm_sa_spamd_enable|bool
 
 - name: disable and stop spamd
-  service:
+  ansible.builtin.service:
     name: sa-spamd
     state: stopped
     enabled: false
 
 - name: restart spamd
-  service:
+  ansible.builtin.service:
     name: sa-spamd
     state: restarted
   when: fm_sa_spamd_enable|bool
 
 - name: reload spamd
-  service:
+  ansible.builtin.service:
     name: sa-spamd
     state: reloaded
   when: fm_sa_spamd_enable|bool
 
 # postfix
 - name: postfix check
-  command: /usr/local/sbin/postfix check
+  command:
+    cmd: /usr/local/sbin/postfix check
 
 - name: reload postfix
-  service:
+  ansible.builtin.service:
     name: postfix
     state: reloaded
 
 - name: restart postfix
-  service:
+  ansible.builtin.service:
     name: postfix
     state: restarted
 

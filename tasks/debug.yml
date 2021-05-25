@@ -2,7 +2,7 @@
 
 - name: "Debug"
   vars:
-    msg: |
+    msg: |-
          ansible_architecture [{{ ansible_architecture }}]
          ansible_os_family [{{ ansible_os_family }}]
          ansible_distribution [{{ ansible_distribution }}]
@@ -15,11 +15,15 @@
          fm_sa_sanity_platform [{{ fm_sa_sanity_platform }}]
          fm_sa_sanity_ansible_version [{{ fm_sa_sanity_ansible_version }}]
          fm_sa_sanity_packages [{{ fm_sa_sanity_packages }}]
+         al_sanity_packages_required
+         {{ al_sanity_packages_required|to_yaml }}
 
+         fm_sa_install [{{ fm_sa_install }}]
          freebsd_install_method [{{ freebsd_install_method }}]
          freebsd_use_packages [{{ freebsd_use_packages }}]
          fm_sa_packages
          {{ fm_sa_packages|to_nice_yaml }}
+
          fm_sa_spamd_enable [{{ fm_sa_spamd_enable }}]
          fm_sa_spamd_flags [{{ fm_sa_spamd_flags }}]
          fm_sa_periodic_conf
@@ -29,10 +33,8 @@
          postfix_master_cf_service_def [{{ postfix_master_cf_service_def }}]
 
          al_debug [{{ al_debug }}]
-         al_sanity_packages_required
-         {{ al_sanity_packages_required|to_yaml }}
-  debug:
-    msg: "{{ msg.split('\n')[:-1] }}"
+  ansible.builtin.debug:
+    msg: "{{ msg.split('\n') }}"
 
 # EOF
 ...
