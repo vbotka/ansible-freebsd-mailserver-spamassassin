@@ -7,7 +7,7 @@
         file: meta/main.yml
       when: galaxy_info is undefined
     - name: "sanity: Get role_name."
-      set_fact:
+      ansible.builtin.set_fact:
         al_sanity_role_name: "{{ role_name }}"
   when: fm_sa_sanity_platform|bool or fm_sa_sanity_ansible_version|bool
 
