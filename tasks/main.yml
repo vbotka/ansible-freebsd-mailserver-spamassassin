@@ -1,28 +1,35 @@
 ---
 # tasks for freebsd_mailserver_spamassassin
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: fm_sa_debug|bool
   tags: [fm-sa-debug, always]
 
-- import_tasks: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: fm_sa_install|bool
   tags: fm-sa-packages
 
-- import_tasks: sanity.yml
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
   when: fm_sa_sanity|bool
   tags: fm-sa-sanity
 
-- import_tasks: rcconf.yml
+- name: Import rcconf.yml
+  ansible.builtin.import_tasks: rcconf.yml
   tags: fm-sa-rcconf
 
-- import_tasks: postfix_master.yml
+- name: Import postfix_master.yml
+  ansible.builtin.import_tasks: postfix_master.yml
   tags: fm-sa-postfix_master
 
-- import_tasks: copy_spamfilter.yml
+- name: Import copy_spamfilter.yml
+  ansible.builtin.import_tasks: copy_spamfilter.yml
   tags: fm-sa-copy_spamfilter
 
-- import_tasks: periodic_conf.yml
+- name: Import periodic_conf.yml
+  ansible.builtin.import_tasks: periodic_conf.yml
   tags: fm-sa-periodic_conf
 
 # EOF
