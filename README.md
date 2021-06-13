@@ -25,7 +25,7 @@ The dependencies are not listed in the meta file. Install them manually.
 
 ## Variables
 
-Review the defaults and examples in vars.
+See the defaults and examples in vars.
 
 
 ## Workflow
@@ -36,10 +36,13 @@ Review the defaults and examples in vars.
 shell> ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
-2) Install role
+2) Install the role and dependencies
 
 ```
+shell> ansible-galaxy role install vbotka.freebsd_mailserver
 shell> ansible-galaxy role install vbotka.freebsd_mailserver_spamassassin
+shell> ansible-galaxy role install vbotka.ansible_lib
+shell> ansible-galaxy collection install community.general
 ```
 
 3) Fit variables, e.g. in vars/main.yml

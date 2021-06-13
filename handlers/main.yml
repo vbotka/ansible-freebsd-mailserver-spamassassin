@@ -3,7 +3,7 @@
 
 # sa-spamd
 - name: update spamd rules
-  command:
+  ansible.builtin.command:
     cmd: /usr/local/bin/sa-update
 
 - name: enable and start spamd
@@ -33,7 +33,7 @@
 
 # postfix
 - name: postfix check
-  command:
+  ansible.builtin.command:
     cmd: /usr/local/sbin/postfix check
 
 - name: reload postfix
