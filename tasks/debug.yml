@@ -1,6 +1,6 @@
 ---
 
-- name: "Debug"
+- name: Debug
   vars:
     msg: |-
          ansible_architecture [{{ ansible_architecture }}]
@@ -34,7 +34,7 @@
 
          al_debug [{{ al_debug }}]
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
 
 # EOF
 ...
