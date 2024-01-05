@@ -7,7 +7,7 @@
     line: '{{ item.regexp }}="{{ item.value }}"'
     backup: "{{ fm_sa_backup_conf }}"
     create: true
-    mode: "0644"
+    mode: '0644'
   loop: "{{ fm_sa_periodic_conf }}"
 
 # EOF

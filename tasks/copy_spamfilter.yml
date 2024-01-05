@@ -6,7 +6,7 @@
     dest: "{{ fm_sa_spamfilter_path }}/spamfilter.sh"
     owner: root
     group: wheel
-    mode: "0755"
+    mode: '0755'
 
 # EOF
 ...

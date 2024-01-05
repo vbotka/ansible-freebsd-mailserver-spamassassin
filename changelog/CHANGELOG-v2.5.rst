@@ -20,7 +20,7 @@ Major Changes
 Minor Changes
 -------------
 * Update README
-* Remove redundant quotes defaults/main.yml
+* Remove redundant quotes defaults/main.yml and tasks
 * Update handlers. sa-update fails when rc>1. rc=1 means download only
   no ruleset update yet.
 * Update rcconf.yml. Add variable fm_sa_spamd_rcconf. Run
