@@ -5,13 +5,14 @@
 - name: update spamd rules
   ansible.builtin.command:
     cmd: /usr/local/bin/sa-update
+  register: out
+  failed_when: out.rc > 1
 
 - name: enable and start spamd
   ansible.builtin.service:
     name: sa-spamd
     state: started
     enabled: true
-  when: fm_sa_spamd_enable|bool
 
 - name: disable and stop spamd
   ansible.builtin.service:

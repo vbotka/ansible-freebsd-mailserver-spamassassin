@@ -30,32 +30,37 @@ See the defaults and examples in vars.
 
 ## Workflow
 
-1) Change shell to /bin/sh
+1) Change shell to /bin/sh if necessary
 
-```
+```bash
 shell> ansible mailserver -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod freebsd -s /bin/sh'
 ```
 
-2) Install the role and dependencies
+2) Install roles
 
-```
+```bash
 shell> ansible-galaxy role install vbotka.freebsd_mailserver
 shell> ansible-galaxy role install vbotka.freebsd_mailserver_spamassassin
 shell> ansible-galaxy role install vbotka.ansible_lib
+```
+
+3) Install the collection if necessary
+
+```bash
 shell> ansible-galaxy collection install community.general
 ```
 
-3) Fit variables, e.g. in vars/main.yml
+4) Fit variables, for example in vars/main.yml
 
-```
+```bash
 shell> editor vbotka.freebsd_mailserver_spamassassin/vars/main.yml
 ```
 
-By default the daemon *sa-spamd* is disabled *fm_sa_spamd_enable: False*.
+By default, the daemon *sa-spamd* is disabled (*fm_sa_spamd_enable: false*).
 
-4) Create playbook
+5) Create playbook
 
-```
+```yaml
 shell> cat freebsd-mailserver.yml
 
 - hosts: mailserver
@@ -64,9 +69,9 @@ shell> cat freebsd-mailserver.yml
     - vbotka.freebsd_mailserver_spamassassin
 ```
 
-5) Install and configure Postfix with SpamAssassin
+6) Install and configure Postfix with SpamAssassin
 
-```
+```bash
 shell> ansible-playbook freebsd-mailserver.yml
 ```
 
@@ -85,4 +90,4 @@ shell> ansible-playbook freebsd-mailserver.yml
 
 ## Author Information
 
-[Vladimir Botka](https://botka.link)
+[Vladimir Botka](https://botka.info)

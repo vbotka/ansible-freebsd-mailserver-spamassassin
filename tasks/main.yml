@@ -4,33 +4,33 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: fm_sa_debug|bool
-  tags: fm-sa-debug
+  tags: fm_sa_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
   when: fm_sa_install|bool
-  tags: fm-sa-packages
+  tags: fm_sa_packages
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
   when: fm_sa_sanity|bool
-  tags: fm-sa-sanity
+  tags: fm_sa_sanity
 
 - name: Import rcconf.yml
   ansible.builtin.import_tasks: rcconf.yml
-  tags: fm-sa-rcconf
+  tags: fm_sa_rcconf
 
 - name: Import postfix_master.yml
   ansible.builtin.import_tasks: postfix_master.yml
-  tags: fm-sa-postfix_master
+  tags: fm_sa_postfix_master
 
 - name: Import copy_spamfilter.yml
   ansible.builtin.import_tasks: copy_spamfilter.yml
-  tags: fm-sa-copy_spamfilter
+  tags: fm_sa_copy_spamfilter
 
 - name: Import periodic_conf.yml
   ansible.builtin.import_tasks: periodic_conf.yml
-  tags: fm-sa-periodic_conf
+  tags: fm_sa_periodic_conf
 
 # EOF
 ...

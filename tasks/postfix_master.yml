@@ -4,7 +4,7 @@
   ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
     regexp: '^spamfilter\s+unix\s+(.*)$'
-    line: "spamfilter unix  -       n       n       -       -       pipe"
+    line: 'spamfilter unix  -       n       n       -       -       pipe'
     backup: "{{ fm_sa_backup_conf }}"
   notify:
     - postfix check
