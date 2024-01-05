@@ -5,6 +5,8 @@
 - name: update spamd rules
   ansible.builtin.command:
     cmd: /usr/local/bin/sa-update
+  register: out
+  failed_when: out.rc > 1
 
 - name: enable and start spamd
   ansible.builtin.service:

@@ -8,7 +8,6 @@ vbotka.freebsd_mailserver_spamassassin 2.5 Release Notes
 2.5.0
 =====
 
-
 Release Summary
 ---------------
 Ansible 2.15 update
@@ -22,6 +21,8 @@ Minor Changes
 -------------
 * Update README
 * Remove redundant quotes defaults/main.yml
+* sa-update fails when rc>1. rc=1 means download only no ruleset
+  update yet.
 
 Bugfixes
 --------
