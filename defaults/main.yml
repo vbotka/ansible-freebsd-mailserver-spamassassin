@@ -7,6 +7,8 @@ fm_sa_backup_conf: false
 
 fm_sa_spamd_enable: false
 fm_sa_spamd_flags: -u spamd -H /var/spool/spamd
+fm_sa_spamd_rcconf:
+  - {regexp: spamd_flags, line: "{{ fm_sa_spamd_flags }}"}
 
 # packages
 freebsd_install_method: packages

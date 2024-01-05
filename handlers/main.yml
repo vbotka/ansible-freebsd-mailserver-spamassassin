@@ -13,7 +13,6 @@
     name: sa-spamd
     state: started
     enabled: true
-  when: fm_sa_spamd_enable|bool
 
 - name: disable and stop spamd
   ansible.builtin.service:

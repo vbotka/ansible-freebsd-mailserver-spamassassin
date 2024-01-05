@@ -9,7 +9,7 @@
   notify:
     - update spamd rules
     - enable and start spamd
-  when: fm_sa_spamd_enable
+  when: fm_sa_spamd_enable|bool
   tags: spamd_rcconf
 
 - name: "rcconf: Disable and stop spamd"
@@ -19,7 +19,7 @@
     line: 'spamd_enable="NO"'
     backup: "{{ fm_sa_backup_conf }}"
   notify: disable and stop spamd
-  when: not fm_sa_spamd_enable
+  when: not fm_sa_spamd_enable|bool
   tags: spamd_rcconf
 
 - name: "rcconf: Configure spamd"
@@ -28,11 +28,16 @@
     regexp: '^\s*{{ item.regexp }}\s*=(.*)'
     line: '{{ item.regexp }}="{{ item.line }}"'
     backup: "{{ fm_sa_backup_conf }}"
-  with_items:
-    - {regexp: spamd_flags, line: "{{ fm_sa_spamd_flags }}"}
+  loop: "{{ fm_sa_spamd_rcconf }}"
   notify: restart spamd
-  when: fm_sa_spamd_enable
   tags: spamd_rcconf
+
+- name: "rcconf: {{ state }} spamd"
+  ansible.builtin.service:
+    name: sa-spamd
+    state: "{{ state }}"
+  vars:
+    state: "{{ fm_sa_spamd_enable|bool|ternary('started', 'stopped') }}"
 
 # EOF
 ...
