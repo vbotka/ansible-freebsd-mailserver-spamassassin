@@ -25,6 +25,7 @@ Minor Changes
   no ruleset update yet.
 * Update rcconf.yml. Add variable fm_sa_spamd_rcconf. Run
   ansible.builtin.service
+* Formatting debug.yml
 
 Bugfixes
 --------
