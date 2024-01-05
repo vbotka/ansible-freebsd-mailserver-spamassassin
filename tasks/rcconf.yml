@@ -10,7 +10,6 @@
     - update spamd rules
     - enable and start spamd
   when: fm_sa_spamd_enable|bool
-  tags: spamd_rcconf
 
 - name: "rcconf: Disable and stop spamd"
   ansible.builtin.lineinfile:
@@ -20,7 +19,6 @@
     backup: "{{ fm_sa_backup_conf }}"
   notify: disable and stop spamd
   when: not fm_sa_spamd_enable|bool
-  tags: spamd_rcconf
 
 - name: "rcconf: Configure spamd"
   ansible.builtin.lineinfile:
@@ -30,7 +28,6 @@
     backup: "{{ fm_sa_backup_conf }}"
   loop: "{{ fm_sa_spamd_rcconf }}"
   notify: restart spamd
-  tags: spamd_rcconf
 
 - name: "rcconf: {{ state }} spamd"
   ansible.builtin.service:

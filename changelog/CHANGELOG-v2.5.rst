@@ -32,3 +32,5 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
+
+* Change tags. Replace dash '-' by underscore '_'. Remove spamd_rcconf
