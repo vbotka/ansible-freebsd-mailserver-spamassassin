@@ -10,7 +10,8 @@ vbotka.freebsd_mailserver_spamassassin 2.5 Release Notes
 
 Release Summary
 ---------------
-Ansible 2.15 update
+Ansible 2.15 update. Add 14.0. Change tags. Code cleaning and
+formatting.
 
 
 Major Changes
@@ -32,5 +33,4 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
-
 * Change tags. Replace dash '-' by underscore '_'. Remove spamd_rcconf
