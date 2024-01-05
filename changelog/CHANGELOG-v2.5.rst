@@ -21,6 +21,7 @@ Major Changes
 Minor Changes
 -------------
 * Update README
+* Remove redundant quotes defaults/main.yml
 
 Bugfixes
 --------

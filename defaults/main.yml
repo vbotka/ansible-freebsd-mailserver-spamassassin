@@ -6,7 +6,7 @@ fm_sa_debug: false
 fm_sa_backup_conf: false
 
 fm_sa_spamd_enable: false
-fm_sa_spamd_flags: "-u spamd -H /var/spool/spamd"
+fm_sa_spamd_flags: -u spamd -H /var/spool/spamd
 
 # packages
 freebsd_install_method: packages
@@ -39,17 +39,17 @@ al_sanity_packages_required:
 
 # periodic
 fm_sa_periodic_conf:
-  - {regexp: daily_sa_enable, value: "YES"}
-  - {regexp: daily_sa_compile, value: "YES"}
-  - {regexp: daily_sa_compile_nice, value: "YES"}
-  - {regexp: daily_sa_restart_spamd, value: "YES"}
+  - {regexp: daily_sa_enable, value: 'YES'}
+  - {regexp: daily_sa_compile, value: 'YES'}
+  - {regexp: daily_sa_compile_nice, value: 'YES'}
+  - {regexp: daily_sa_restart_spamd, value: 'YES'}
 
 # Change when running in jail to avoid msg: Destination /usr/bin not writable
 fm_sa_spamfilter_path: /usr/bin
 
 # Postfix
 postfix_master_cf: /usr/local/etc/postfix/master.cf
-postfix_master_cf_service_def: "inet  n       -       -       -       -       smtpd -o content_filter=spamfilter"
+postfix_master_cf_service_def: 'inet  n       -       -       -       -       smtpd -o content_filter=spamfilter'
 
 # EOF
 ...
