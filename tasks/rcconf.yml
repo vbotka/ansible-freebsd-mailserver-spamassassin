@@ -1,40 +1,38 @@
 ---
-
-- name: "rcconf: Enable and start spamd"
+- name: "Rcconf: Enable and start spamd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*spamd_enable\s*=(.*)$'
-    line: 'spamd_enable="YES"'
+    regexp: ^\s*spamd_enable\s*=(.*)$
+    line: spamd_enable="YES"
     backup: "{{ fm_sa_backup_conf }}"
   notify:
     - update spamd rules
     - enable and start spamd
-  when: fm_sa_spamd_enable|bool
+  when: fm_sa_spamd_enable | bool
 
-- name: "rcconf: Disable and stop spamd"
+- name: "Rcconf: Disable and stop spamd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*spamd_enable\s*=(.*)$'
-    line: 'spamd_enable="NO"'
+    regexp: ^\s*spamd_enable\s*=(.*)$
+    line: spamd_enable="NO"
     backup: "{{ fm_sa_backup_conf }}"
   notify: disable and stop spamd
-  when: not fm_sa_spamd_enable|bool
+  when: not fm_sa_spamd_enable | bool
 
-- name: "rcconf: Configure spamd"
+- name: "Rcconf: Configure spamd"
   ansible.builtin.lineinfile:
     dest: /etc/rc.conf
-    regexp: '^\s*{{ item.regexp }}\s*=(.*)'
+    regexp: ^\s*{{ item.regexp }}\s*=(.*)
     line: '{{ item.regexp }}="{{ item.line }}"'
     backup: "{{ fm_sa_backup_conf }}"
   loop: "{{ fm_sa_spamd_rcconf }}"
   notify: restart spamd
 
-- name: "rcconf: {{ state }} spamd"
+- name: "Rcconf: spamd {{ state }}"
   ansible.builtin.service:
     name: sa-spamd
     state: "{{ state }}"
   vars:
-    state: "{{ fm_sa_spamd_enable|bool|ternary('started', 'stopped') }}"
+    state: "{{ fm_sa_spamd_enable | bool | ternary('started', 'stopped') }}"
 
 # EOF
-...

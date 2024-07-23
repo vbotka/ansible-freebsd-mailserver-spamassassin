@@ -1,6 +1,8 @@
 # freebsd_mailserver_spamassassin
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_mailserver_spamassassin)[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_mailserver_spamassassin)
+[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-mailserver-spamassassin)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-mailserver-spamassassin)](https://github.com/vbotka/ansible-freebsd-mailserver-spamassassin/tags)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_mailserver_spamassassin/) FreeBSD. Install and configure Apache SpamAssassin with Postfix.
 
@@ -20,7 +22,7 @@ The dependencies are not listed in the meta file. Install them manually.
 
 ### Collections
 
-- community.general
+* community.general
 
 
 ## Variables
@@ -50,11 +52,7 @@ shell> ansible-galaxy role install vbotka.ansible_lib
 shell> ansible-galaxy collection install community.general
 ```
 
-4) Fit variables, for example in vars/main.yml
-
-```bash
-shell> editor vbotka.freebsd_mailserver_spamassassin/vars/main.yml
-```
+4) Fit variables to your needs.
 
 By default, the daemon *sa-spamd* is disabled (*fm_sa_spamd_enable: false*).
 
@@ -76,6 +74,17 @@ shell> ansible-playbook freebsd-mailserver.yml
 ```
 
 6) Consider to test the mailserver with http://mxtoolbox.com/
+
+
+## Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
+```
 
 
 ## References

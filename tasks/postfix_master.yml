@@ -1,42 +1,40 @@
 ---
-
-- name: "postfix_master: Configure spamfilter {{ postfix_master_cf }}"
+- name: "Postfix_master: Configure spamfilter {{ postfix_master_cf }}"
   ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
-    regexp: '^spamfilter\s+unix\s+(.*)$'
-    line: 'spamfilter unix  -       n       n       -       -       pipe'
+    regexp: ^spamfilter\s+unix\s+(.*)$
+    line: spamfilter unix  -       n       n       -       -       pipe
     backup: "{{ fm_sa_backup_conf }}"
   notify:
     - postfix check
     - reload postfix
 
-- name: "postfix_master: Configure spamfilter options {{ postfix_master_cf }}"
+- name: "Postfix_master: Configure spamfilter options {{ postfix_master_cf }}"
   ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-    insertafter: '^spamfilter unix\s+(.*)$'
+    insertafter: ^spamfilter unix\s+(.*)$
     backup: "{{ fm_sa_backup_conf }}"
   loop:
-    - regexp: '\s*flags=Rq user=spamd argv=(.*)$'
+    - regexp: \s*flags=Rq user=spamd argv=(.*)$
       line: "   flags=Rq user=spamd argv={{ fm_sa_spamfilter_path }}/spamfilter.sh -oi -f ${sender} ${recipient}"
   notify:
     - postfix check
     - reload postfix
 
-- name: "postfix_master: Configure {{ postfix_master_cf }}"
+- name: "Postfix_master: Configure {{ postfix_master_cf }}"
   ansible.builtin.lineinfile:
     dest: "{{ postfix_master_cf }}"
-    regexp: "^{{ item.regexp }}"
+    regexp: ^{{ item.regexp }}
     line: "{{ item.line }}"
     backup: "{{ fm_sa_backup_conf }}"
   loop:
-    - {regexp: 'smtp\s+inet\s+(.*)$', line: "smtp  {{ postfix_master_cf_service_def }}"}
-    - {regexp: 'smtps\s+inet\s+(.*)$', line: "smtps  {{ postfix_master_cf_service_def }}"}
-    - {regexp: 'submission\s+inet\s+(.*)$', line: "submission  {{ postfix_master_cf_service_def }}"}
+    - { regexp: smtp\s+inet\s+(.*)$, line: "smtp  {{ postfix_master_cf_service_def }}" }
+    - { regexp: smtps\s+inet\s+(.*)$, line: "smtps  {{ postfix_master_cf_service_def }}" }
+    - { regexp: submission\s+inet\s+(.*)$, line: "submission  {{ postfix_master_cf_service_def }}" }
   notify:
     - postfix check
     - reload postfix
 
 # EOF
-...

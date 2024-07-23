@@ -1,5 +1,6 @@
 ---
 # defaults for freebsd_mailserver_spamassassin
+fm_sa_role_version: 2.6.0
 
 fm_sa_install: true
 fm_sa_debug: false
@@ -8,11 +9,11 @@ fm_sa_backup_conf: false
 fm_sa_spamd_enable: false
 fm_sa_spamd_flags: -u spamd -H /var/spool/spamd
 fm_sa_spamd_rcconf:
-  - {regexp: spamd_flags, line: "{{ fm_sa_spamd_flags }}"}
+  - { regexp: spamd_flags, line: "{{ fm_sa_spamd_flags }}" }
 
 # packages
 freebsd_install_method: packages
-#freebsd_install_method: ports
+# freebsd_install_method: ports
 freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
@@ -26,7 +27,12 @@ fm_sa_sanity: true
 fm_sa_sanity_platform: true
 fm_sa_sanity_ansible_version: true
 fm_sa_sanity_packages: true
-al_supported_versions_override: ['12.2', '13.0']
+
+al_supported_versions_override: "{{ al_supported_versions_override_rel | flatten }}"
+al_supported_versions_override_rel:
+  - ["12.2", "12.3", "12.4"]
+  - ["13.0", "13.1", "13.2", "13.3"]
+  - ["14.0", "14.1"]
 al_sanity_platform_warning: false
 
 # packages test required
@@ -41,17 +47,16 @@ al_sanity_packages_required:
 
 # periodic
 fm_sa_periodic_conf:
-  - {regexp: daily_sa_enable, value: 'YES'}
-  - {regexp: daily_sa_compile, value: 'YES'}
-  - {regexp: daily_sa_compile_nice, value: 'YES'}
-  - {regexp: daily_sa_restart_spamd, value: 'YES'}
+  - { regexp: daily_sa_enable, value: "YES" }
+  - { regexp: daily_sa_compile, value: "YES" }
+  - { regexp: daily_sa_compile_nice, value: "YES" }
+  - { regexp: daily_sa_restart_spamd, value: "YES" }
 
 # Change when running in jail to avoid msg: Destination /usr/bin not writable
 fm_sa_spamfilter_path: /usr/bin
 
 # Postfix
 postfix_master_cf: /usr/local/etc/postfix/master.cf
-postfix_master_cf_service_def: 'inet  n       -       -       -       -       smtpd -o content_filter=spamfilter'
+postfix_master_cf_service_def: inet  n       -       -       -       -       smtpd -o content_filter=spamfilter
 
 # EOF
-...

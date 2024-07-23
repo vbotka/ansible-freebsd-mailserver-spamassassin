@@ -1,51 +1,59 @@
 ---
 # handlers for freebsd_mailserver_spamassassin
 
-# sa-spamd
-- name: update spamd rules
+  # sa-spamd
+- name: Update spamd rules
+  listen: update spamd rules
   ansible.builtin.command:
     cmd: /usr/local/bin/sa-update
   register: out
-  failed_when: out.rc > 1
+  changed_when: out.rc == 0 # update downloaded and installed; 1 no update available
+  failed_when: out.rc >= 2  # update failed
 
-- name: enable and start spamd
+- name: Enable and start spamd
+  listen: enable and start spamd
   ansible.builtin.service:
     name: sa-spamd
     state: started
     enabled: true
 
-- name: disable and stop spamd
+- name: Disable and stop spamd
+  listen: disable and stop spamd
   ansible.builtin.service:
     name: sa-spamd
     state: stopped
     enabled: false
 
-- name: restart spamd
+- name: Restart spamd
+  listen: restart spamd
   ansible.builtin.service:
     name: sa-spamd
     state: restarted
-  when: fm_sa_spamd_enable|bool
+  when: fm_sa_spamd_enable | bool
 
-- name: reload spamd
+- name: Reload spamd
+  listen: reload spamd
   ansible.builtin.service:
     name: sa-spamd
     state: reloaded
-  when: fm_sa_spamd_enable|bool
+  when: fm_sa_spamd_enable | bool
 
-# postfix
-- name: postfix check
+  # postfix
+- name: Postfix check # noqa: no-changed-when
+  listen: postfix check
   ansible.builtin.command:
     cmd: /usr/local/sbin/postfix check
 
-- name: reload postfix
+- name: Reload postfix
+  listen: reload postfix
   ansible.builtin.service:
     name: postfix
     state: reloaded
 
-- name: restart postfix
+- name: Restart postfix
+  listen: restart postfix
   ansible.builtin.service:
     name: postfix
     state: restarted
 
 # EOF
-...
