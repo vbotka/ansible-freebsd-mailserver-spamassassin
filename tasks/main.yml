@@ -3,17 +3,17 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: fm_sa_debug|bool
+  when: fm_sa_debug | bool
   tags: fm_sa_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: fm_sa_install|bool
+  when: fm_sa_install | bool
   tags: fm_sa_packages
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
-  when: fm_sa_sanity|bool
+  when: fm_sa_sanity | bool
   tags: fm_sa_sanity
 
 - name: Import rcconf.yml
@@ -33,4 +33,3 @@
   tags: fm_sa_periodic_conf
 
 # EOF
-...

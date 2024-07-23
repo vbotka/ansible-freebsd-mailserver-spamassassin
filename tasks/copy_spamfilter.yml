@@ -1,12 +1,10 @@
 ---
-
-- name: "copy_spamfilter: Copy spamfilter.sh to {{ fm_sa_spamfilter_path }}"
+- name: "Copy_spamfilter: Copy spamfilter.sh to {{ fm_sa_spamfilter_path }}"
   ansible.builtin.copy:
     src: "{{ role_path }}/files/spamfilter.sh"
     dest: "{{ fm_sa_spamfilter_path }}/spamfilter.sh"
     owner: root
     group: wheel
-    mode: '0755'
+    mode: "0755"
 
 # EOF
-...
