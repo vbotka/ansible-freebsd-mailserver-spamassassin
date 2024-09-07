@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_mailserver_spamassassin
-fm_sa_role_version: 2.6.0
+fm_sa_role_version: 2.6.1
 
 fm_sa_install: true
 fm_sa_debug: false
